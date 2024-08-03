@@ -11,12 +11,12 @@ jobs:
 
     - name: Download ngrok
       run: |
-        Invoke-WebRequest https://raw.githubusercontent.com/its-star-boi/ngrok-rdp/main/resources/ngrok.zip -OutFile ngrok.zip
+        Invoke-WebRequest https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz -OutFile ngrok.zip
         Invoke-WebRequest https://raw.githubusercontent.com/its-star-boi/ngrok-rdp/main/resources/start.bat -OutFile start.bat
         Invoke-WebRequest https://raw.githubusercontent.com/its-star-boi/ngrok-rdp/main/resources/winrar.exe -OutFile winrar.exe
 
     - name: Extract ngrok Files
-      run: Expand-Archive ngrok.zip
+      run: sudo tar -xvzf ~/Downloads/ngrok-v3-stable-linux-amd64.tgz -C /usr/local/bin
 
     - name: Connecting ngrok Account
       run: .\ngrok\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
